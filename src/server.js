@@ -1,6 +1,12 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const routes = require('./routes');
 const app = express();
+
+mongoose.connect('mongodb+srv://PedroSoares:Psoares1998@omnistack-jm4st.mongodb.net/admin?retryWrites=true&w=majority',{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 //  GET, POST, PUT, DELETE
 
