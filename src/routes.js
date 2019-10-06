@@ -5,4 +5,7 @@ routes.post('/users', (req, res) => {
   return res.json(req.body);
 });
 
+
+//teste
+
 module.exports = routes;
