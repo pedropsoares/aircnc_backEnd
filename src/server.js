@@ -8,12 +8,6 @@ mongoose.connect('mongodb://PedroSoares:1234@omnistack-shard-00-00-jm4st.mongodb
   useUnifiedTopology: true,
 })
 
-//  GET, POST, PUT, DELETE
-
-//req.query = Acessar query params (para filtros)
-//req.params = Acessar route params (para edição, delete
-//req.bady = Acessar corpo da requisição (criação, edição)
-
 app.use(express.json());
 app.use(routes);
 
