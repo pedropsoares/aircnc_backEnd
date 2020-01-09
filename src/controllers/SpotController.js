@@ -2,13 +2,13 @@ const User = require('../models/User');
 const Spot = require('../models/Spot');
 
 module.exports = {
- async index(req, res){
-  const { tech } = req.query;
+  async index(req, res) {
+    const { tech } = req.query;
 
-  const spots = await Spot.find({ techs: tech })
+    const spots = await Spot.find({ techs: tech })
 
-  return res.json(spots);
- },
+    return res.json(spots);
+  },
 
   async store(req, res) {
     const { filename } = req.file;
@@ -17,7 +17,7 @@ module.exports = {
 
     const user = await User.findById(user_id)
 
-    if(!user) {
+    if (!user) {
       return res.status(400).json({ error: 'User does not exists' })
     }
 
@@ -29,6 +29,20 @@ module.exports = {
       price
     })
 
-    return res.json(spot)
+    return res.json(spot);
+  },
+
+  async update(req, res) {
+    const spot = await Spot.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
+
+    return res.json(spot);
+  },
+
+  async destroy(req, res) {
+    await Spot.findByIdAndRemove(req.params.id);
+
+    return res.send();
   }
 };
